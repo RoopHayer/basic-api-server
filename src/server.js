@@ -22,6 +22,6 @@ app.use('*',error404);
 app.use(error500);
 
 module.exports = {
-  app,
+  app: app,
   start:port=>{ app.listen(port, () => console.log('Server is up')),port
 }}
