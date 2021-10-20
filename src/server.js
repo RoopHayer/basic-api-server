@@ -6,7 +6,6 @@ const logger = require('./middleware/logger.js')
 const validator = require('./middleware/validator.js')
 const error404 = require('./errors-handlers/404.js')
 const error500 = require('./errors-handlers/500.js')
-const supertest = 
 app.use(express.json());
 
 app.use(logger);
@@ -19,8 +18,8 @@ function handlePerson(request, response){
 }
 
 
-app.use(error500);
 app.use('*',error404);
+app.use(error500);
 
 module.exports = {
   app,
