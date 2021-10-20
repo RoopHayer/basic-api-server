@@ -13,13 +13,14 @@ app.use(logger);
 app.get('/person', validator, handlePerson)
 
 function handlePerson(request, response){
-  let name =request.query
+  let name  =request.query.name;
   response.send(name);
+  response.status(200);
 }
 
 
-app.use('*',error404);
 app.use(error500);
+app.use('*',error404);
 
 module.exports = {
   app,
