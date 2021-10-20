@@ -1,13 +1,23 @@
-// 'use strict';
+'use strict';
 
-// const error404 = require('../src/errors-handlers/404.js')
-// const supertest = require('supertest');
+const logger = require ('../src/middleware/logger.js')
+const error = require('../src/errors-handlers/404.js')
 
-// describe('Testing 404 for a bad route', ()=>{
-//   let req ={method: 'GET'};
-//   let res = {};
-//   it('Should be able to throw a 404 on  abad route', ()=>{
-//     error(err,req,res,next)
-//     expect(response.status).toBe(404)
-//   })
-// })
+
+describe('Testing for logger', ()=>{
+  let req ={method: 'GET'};
+  let res = {};
+  let next = jest.fn();
+  console.log = jest.fn();
+
+  it('Should be able to log GET method', ()=>{
+    logger(req,res,next);
+    expect(console.log).toHaveBeenCalledWith('GET');
+    
+  })
+
+  it('Should be able to go to next function', ()=>{
+    logger(req,res,next);
+    expect(next).toHaveBeenCalled();
+  })
+})
