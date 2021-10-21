@@ -2,10 +2,15 @@
 
 const express = require('express');
 const app = express();
-const logger = require('./middleware/logger.js')
-const validator = require('./middleware/validator.js')
-const error404 = require('./errors-handlers/404.js')
-const error500 = require('./errors-handlers/500.js')
+const logger = require('./middleware/logger.js');
+const validator = require('./middleware/validator.js');
+const error404 = require('./errors-handlers/404.js');
+const error500 = require('./errors-handlers/500.js');
+const { food, clothes } = require ('./models');
+ 
+
+
+
 app.use(express.json());
 
 app.use(logger);
