@@ -6,9 +6,7 @@ const FoodModel = require ('./food.js')
 const ClothesModel = require ('./clothes.js')
 
 
-// let DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
-let DATABASE_URL = 'sqlite:memory';
-// let DATABASE_URL = 'postgresql://localhost:5432/lab3';
+let DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
 
 
 
@@ -17,25 +15,24 @@ let DATABASE_URL = 'sqlite:memory';
 
 
 //  HEADS UP:  our PRODUCTION database requires some extra config ------->
-// const options = process.env.NODE_ENV === 'production'
-//   ? {
-//     dialectOptions: {
-//       ssl: {
-//         require: true,
-//         rejectUnauthorized: false,
-//       }
-//     }
-//   }
-//   : {};
+const options = process.env.NODE_ENV === 'production'
+  ? {
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      }
+    }
+  }
+  : {};
 
 
 //------------------->
 
-// const sequelizeInstance = new Sequelize(DATABASE_URL, options);
+const sequelizeInstance = new Sequelize(DATABASE_URL, options);
 
-const sequelizeInstance = new Sequelize(DATABASE_URL);
+// const sequelizeInstance = new Sequelize(DATABASE_URL);
 
-// Do we need two of these for different models?
 
 
 const foodTable = FoodModel(sequelizeInstance, DataTypes);

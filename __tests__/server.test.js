@@ -4,7 +4,7 @@ const app = require('../src/server.js')
 const supertest = require('supertest');
 const request = supertest(app.app);
 
-xdescribe('Testing for name in query string on GET /Person',  ()=>{
+describe('Testing for name in query string on GET /Person',  ()=>{
   
   let response = {};
 

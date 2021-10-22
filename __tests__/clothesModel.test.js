@@ -11,7 +11,7 @@ afterAll (async ()=> {
 });
 
 
-xdescribe('Testing our sequelize model', () => {
+describe('Testing our sequelize model', () => {
 
   it('Should be able to create a Cloth item', async () => {
 

@@ -53,6 +53,6 @@ describe('Testing for food route', ()=>{
       it('testing a 200 for DELETE /food/:Id', async () => {
         const response = await request.delete('/food/1');
     
-        expect(response.status).toEqual(204);
+        expect(response.status).toEqual(200);
       });
     });

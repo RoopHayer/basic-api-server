@@ -11,10 +11,9 @@ router.post('/', createFood);
 router.put('/:id', updateFood);
 router.delete('/:id', deleteFood);
 
-// start writing our route handlers!
-// what's the first we want this function to do?
+
 async function getOneFood(request, response) {
-  // perform our CRUD
+
   
   const id = request.params.id;
   const foundFood = await food.findByPk(id);
@@ -25,14 +24,13 @@ async function getOneFood(request, response) {
 async function getAllFood(request, response, next) {
   try {
 
-    const foundAllFood = await food.findAll(); //returns all rows
+    const foundAllFood = await food.findAll(); 
     response.status(200);
     response.send(foundAllFood);
 
   } catch(e) {
 
-    // response.status(500);
-    // response.send(e);
+
     next(e);
   }
 }
@@ -45,7 +43,7 @@ async function createFood(request, response, next) {
       calories: request.body.calories,
     });
 
-    response.status(201); // Creation successful
+    response.status(201); 
     response.send(newFood);
 
   } catch(e) {

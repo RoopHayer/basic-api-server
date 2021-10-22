@@ -6,7 +6,7 @@ const request = supertest(app.app);
 const validator = require('../src/middleware/validator.js')
 
 
-xdescribe('Testing for validator',  ()=>{
+describe('Testing for validator',  ()=>{
   let req ={method: 'GET', query: {}};
   let res = {status: jest.fn()};
   let next =jest.fn();
