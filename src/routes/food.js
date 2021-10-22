@@ -17,8 +17,7 @@ async function getOneFood(request, response) {
   // perform our CRUD
   
   const id = request.params.id;
-  // how do we get our Food from the DB
-  const foundFood = await food.findByPk(parseInt(id));
+  const foundFood = await food.findByPk(id);
   response.status(200);
   response.send(foundFood);
 }
@@ -43,7 +42,7 @@ async function createFood(request, response, next) {
 
     const newFood = await food.create({
       name: request.body.name,
-      size: request.body.size,
+      calories: request.body.calories,
     });
 
     response.status(201); // Creation successful
@@ -56,29 +55,27 @@ async function createFood(request, response, next) {
 
 async function updateFood(request, response, next) {
   try {
-    // does this actually update?
-    const updatedFood = await food.update({
-      name: request.body.name,
-      size: request.body.size,
-    }, { where: { id: request.params.id } });
 
+    const id = parseInt(request.params.id);
+    const foundFood = await food.findByPk(id);
+    const updatedFood = await foundFood.update(request.body);
     response.status(200);
     response.send(updatedFood);
-  } catch(e) {
+
+  } catch (e) {
+    
     next(e);
   }
 }
 
 async function deleteFood(req, res, next) {
   try {
-
-    // this will return an instance of the clothing model (which has its own methods)
-    // const foundFood = await food.findById();
-    const deletedFood = await food.destroy({ where: { id: req.params.id} }); // returns the number rows deleted
+    const id = parseInt(req.params.id);
+    const foundFood = await food.findByPk(id);
+    const deletedFood = await foundFood.destroy(req.body);
     res.status(200);
     res.send(deletedFood);
-
-  } catch(e) {
+  } catch (e) {
     next(e);
   }
 }
