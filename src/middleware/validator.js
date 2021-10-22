@@ -1,8 +1,8 @@
 'use strict';
  
 module.exports = function(req,res,next){
-  let name =req.query.name;
-  if(name){
+  let query =req.query;
+  if(query){
     next();
   }else{
    next('Invalid query');
