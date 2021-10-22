@@ -39,8 +39,7 @@ describe('Testing for clothes route', () => {
       name: 'shirt',
       fabric: 'cotton',
     });
-    // expect(response.status).toEqual(200);
-    console.log('--------> CLOTHESPUT', response.body);
+    expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('shirt');
   });
 
