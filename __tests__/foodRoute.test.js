@@ -43,6 +43,7 @@ describe('Testing for food route', ()=>{
     it('testing a 200 for PUT /food/:Id', async () => {
       const response = await request.put('/food/1').send({
         name: 'orange',
+        calories: 100,
       });
       expect(response.status).toEqual(200);
       expect(response.body.name).toEqual('orange');
