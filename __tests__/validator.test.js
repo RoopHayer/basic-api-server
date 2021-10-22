@@ -12,13 +12,13 @@ describe('Testing for validator',  ()=>{
   let next =jest.fn();
 
   it('Should be able to run with string as a query',  ()=>{
-    req.query.name='lol';
+    req.query='lol';
     validator(req,res,next)
     expect(next).toHaveBeenCalled();
     })
 
 it('Should be able to throw a 500 on empty query',  ()=>{
-  req.query.name = undefined;
+  req.query = undefined;
   validator(req,res,next)
   expect(next).toHaveBeenCalledWith('Invalid query')
 })
