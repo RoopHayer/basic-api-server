@@ -21,6 +21,7 @@ describe('Testing for food route', ()=>{
       expect(response.status).toEqual(200);
       expect(response.body).toEqual([]);
     });
+
     it('Should be able to create a record using POST', async ()=>{
       const response = await request.post('/food').send({
         name: 'banana',
@@ -31,6 +32,26 @@ describe('Testing for food route', ()=>{
     });
 
 
+    it('testing a 200 for GET /food/:Id', async () => {
+      const response = await request.get('/food/1');
+  
+      expect(response.status).toEqual(200);
+      expect(response.body.name).toEqual('banana')
+    });
 
     
-})
+    it('testing a 200 for PUT /food/:Id', async () => {
+      const response = await request.put('/food/1').send({
+        name: 'orange',
+      });
+      expect(response.status).toEqual(200);
+      expect(response.body.name).toEqual('orange');
+    });
+
+
+      it('testing a 200 for DELETE /food/:Id', async () => {
+        const response = await request.delete('/food/1');
+    
+        expect(response.status).toEqual(204);
+      });
+    });

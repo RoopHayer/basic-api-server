@@ -4,7 +4,7 @@ const logger = require ('../src/middleware/logger.js')
 const error = require('../src/errors-handlers/404.js')
 
 
-describe('Testing for logger', ()=>{
+xdescribe('Testing for logger', ()=>{
   let req ={method: 'GET'};
   let res = {};
   let next = jest.fn();
